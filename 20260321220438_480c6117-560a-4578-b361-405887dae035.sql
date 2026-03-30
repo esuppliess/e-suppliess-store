@@ -1,0 +1,1 @@
+ALTER TABLE public.site_content ADD COLUMN lifestyle_image_links text[] DEFAULT '{}';
