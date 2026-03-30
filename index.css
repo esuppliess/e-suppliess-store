@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* E Supplies Design System - DRMERS-inspired premium editorial aesthetic
+   Monochrome structure: Pure white (#FFFFFF) + Pure black (#000000)
+   All colors in HSL format for Tailwind compatibility
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Core Colors - Pure Monochrome */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    /* Cards & Surfaces - Pure white with black borders */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary - Pure Black */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Very light gray for subtle backgrounds */
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 0%;
+
+    /* Muted - Gray for secondary text */
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - For hover states */
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 0%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs - Strong black for structure */
+    --border: 0 0% 0%;
+    --border-light: 0 0% 85%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 0%;
+
+    /* Radius - Refined corners */
+    --radius: 1rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 0%;
+    --sidebar-ring: 0 0% 0%;
+  }
+
+  /* Dark mode - inverted */
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100%;
+    --border-light: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Premium Typography Hierarchy */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+
+  h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Custom scrollbar for premium feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-foreground/40;
+  }
+}
+
+@layer utilities {
+  /* Section heading style - Editorial uppercase */
+  .section-heading {
+    @apply text-xs font-bold uppercase tracking-[0.15em] text-foreground;
+  }
+
+  /* Product title style */
+  .product-title {
+    @apply text-sm font-medium tracking-tight;
+  }
+
+  /* Price style */
+  .price {
+    @apply text-sm font-semibold;
+  }
+
+  /* Hover image swap effect */
+  .product-image-swap {
+    @apply relative;
+  }
+
+  .product-image-swap .image-primary {
+    @apply opacity-100 transition-all duration-300;
+  }
+
+  .product-image-swap .image-secondary {
+    @apply opacity-0 absolute inset-0 transition-all duration-300;
+  }
+
+  .product-image-swap:hover .image-primary {
+    @apply opacity-0 scale-105;
+  }
+
+  .product-image-swap:hover .image-secondary {
+    @apply opacity-100 scale-105;
+  }
+
+  /* Backdrop blur for sticky header */
+  .header-blur {
+    @apply backdrop-blur-md bg-background/95;
+  }
+
+  /* Editorial divider */
+  .section-divider {
+    @apply w-full h-px bg-foreground;
+  }
+
+  /* Trust strip styling */
+  .trust-item {
+    @apply flex items-center gap-2 text-sm font-medium;
+  }
+
+  /* Premium button variants */
+  .btn-primary {
+    @apply bg-foreground text-background hover:bg-foreground/90 rounded-2xl font-semibold transition-all;
+  }
+
+  .btn-secondary {
+    @apply bg-background text-foreground border border-foreground hover:bg-foreground hover:text-background rounded-2xl font-semibold transition-all;
+  }
+
+  /* Card with strong border */
+  .editorial-card {
+    @apply bg-card border border-foreground rounded-2xl;
+  }
+
+  /* Badge outline style */
+  .badge-outline {
+    @apply border border-foreground bg-transparent text-foreground text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full;
+  }
+}
